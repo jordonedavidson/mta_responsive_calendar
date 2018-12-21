@@ -3,11 +3,19 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            dist: {
+                options: { style: 'expanded' },
+                files: {
+                    'src/theme_bootstrap.css' : 'src/scss/theme.scss'
+                }
+            }
+        },
         concat: {
             css : { 
                 src : [
-                    'node_modules/bootstrap/dist/css/bootstrap.css',
-                    '/src/theme.css'
+                    'src/theme_bootstrap.css',
+                    'src/theme.css'
                     ],
                 dest : 'src/<%= pkg.name %>.css'
             },
@@ -34,7 +42,8 @@ module.exports = function(grunt) {
 
     // load the task handlers
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask(
         'default',

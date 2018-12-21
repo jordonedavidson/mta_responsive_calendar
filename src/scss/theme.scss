@@ -1,0 +1,15 @@
+/* import the bootstrap things we want to modify */ 
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+/*add a colour */
+$maroon : #4d0017;
+$coffee : #6f4e37;
+
+$colors: (
+    "maroon": $maroon,
+    "coffee": $coffee
+);
+
+/* bring in bootstrap to apply it */
+@import "../../node_modules/bootstrap/scss/bootstrap";
