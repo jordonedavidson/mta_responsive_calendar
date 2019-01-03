@@ -8618,3 +8618,27 @@ h3 {
 
 /*# sourceMappingURL=theme_bootstrap.css.map */
 
+header nav a,
+header nav a:hover,
+header button.navbar-toggler,
+footer a,
+footer a:hover {
+    color:#fff;
+}
+
+#copyright {
+    color: #fff;
+}
+
+#social ul{
+    text-align: right;
+    margin: 0 auto;
+}
+.small_logo {
+    text-indent:-9999px;
+    display:inline-block;
+    background: url(/assets/images/mta-sprite.svg) no-repeat -528px -292px;
+    width:49px;
+    height:28px;
+    cursor:pointer;
+}
