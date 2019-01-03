@@ -22,3 +22,51 @@ footer a:hover {
     height:28px;
     cursor:pointer;
 }
+
+#table_of_contents {
+    position: relative;
+    flex: 0 0 25%;
+    max-width: 25%;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: hidden; /* Disable vertical scroll */
+}
+#toc_tab{
+    display:none;
+    position:absolute;
+    top:0;
+    right:0;
+    width:24px;
+    height:24px;
+    text-align:center;
+    z-index: 101;
+}
+
+.toc a {
+    color: #fff;
+}
+.toc ul {
+    margin-left: 0;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@media (max-width: 768px) {
+    #toc_tab {
+        display:block;
+    }
+
+    #table_of_contents {
+        height: 100%; /* 100% Full-height */
+        width: 24px; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 100; /* Stay on top */
+        top: 47px; /* Stay at the top under the main navbar */
+        left: 0;
+        padding-top: 60px; /* Place content 60px from the top */
+        transition: 0.5s; /* 0.5 second transition effect to slide in the */
+    }
+
+    #table_of_contents .toc {
+        display:none;
+    }
+}
