@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                     'src/theme_bootstrap.css',
                     'src/theme.css'
                     ],
-                dest : 'src/<%= pkg.name %>.css'
+                dest : 'assets/css/<%= pkg.name %>.css'
             },
             js : {  
                 src : [
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
                     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
                     '/src/theme.js'
                     ],
-                dest : 'src/<%= pkg.name %>.js'
+                dest : 'assets/js/<%= pkg.name %>.js'
             }
         },
         uglify: {
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
               banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-              src: 'src/<%= pkg.name %>.js',
+              src: 'assets/js/<%= pkg.name %>.js',
               dest: 'assets/js/<%= pkg.name %>.min.js'
             }
           }
@@ -47,7 +47,12 @@ module.exports = function(grunt) {
 
     grunt.registerTask(
         'default',
-        ['concat']
+        ['sass', 'concat']
     );
+
+    grunt.registerTask(
+        'production',
+        ['uglify']
+    )
 
 };
