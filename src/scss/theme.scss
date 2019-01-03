@@ -11,5 +11,10 @@ $colors: (
     "coffee": $coffee
 );
 
+//set primary colour to maroon
+$theme-colors: (
+    "primary" : $maroon
+);
+
 /* bring in bootstrap to apply it */
 @import "../../node_modules/bootstrap/scss/bootstrap";
