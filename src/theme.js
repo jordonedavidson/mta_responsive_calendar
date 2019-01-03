@@ -1,4 +1,23 @@
 
+function setCollapses(top_ul) 
+{
+    var c = 0;
+    jQuery(top_ul).find('li').each(function(){
+        var li = jQuery(this);
+        if( c < 3 ){
+            console.log(li.children('span').html());
+            console.log('ul children? ');
+            console.log(li.has('ul'));
+            c++;
+        }
+        
+        if (li.has('ul').length  != 0) {
+            li.find('a').first().addClass('nav_toggle');
+            li.children('ul').addClass('collapse');
+        }
+    });
+}
+
 function lastPathItem(path)
 {
     var page = path.split("/").pop();
@@ -13,6 +32,8 @@ function lastPathItem(path)
 jQuery(document).ready(function($){
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    setCollapses("#parts");
 
     jQuery('#toc_tab').click(function(e){
         e.preventDefault();
@@ -33,6 +54,19 @@ jQuery(document).ready(function($){
             });
             jQuery('#table_of_contents .toc').css({display: "none"});
             i.removeClass('fa-arrow-left').addClass('fa-arrow-right');
+        }
+    });
+
+    jQuery('.nav_toggle').click(function(e){
+        e.preventDefault();
+        var a = $(this);
+        var li = a.parents('li').first();
+        var target = li.children('ul.collapse');
+
+        if (target.hasClass('show')) {
+            target.collapse('hide');
+        } else {
+            target.collapse('show');
         }
     });
 
