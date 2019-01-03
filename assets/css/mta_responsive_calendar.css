@@ -8881,6 +8881,24 @@ footer a:hover {
     color:#fff;
 }
 
+header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 2;
+}
+
+footer{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+}
+
+#content { 
+    position: relative;
+    top:55px;
+}
+
 #copyright {
     color: #fff;
 }
@@ -8932,6 +8950,8 @@ footer a:hover {
 
 .toc span {
     margin-bottom:.3rem;
+    padding: 0 .3rem;
+    display:inline-block;
 }
 #parts ul {
     background-color: #565d64;
@@ -8939,6 +8959,10 @@ footer a:hover {
 
 #parts ul ul {
     background-color: #40464b;
+}
+
+#parts ul ul ul {
+    background-color: #2b2e32;
 }
 
 @media (max-width: 768px) {
