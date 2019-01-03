@@ -60,13 +60,15 @@ jQuery(document).ready(function($){
     jQuery('.nav_toggle').click(function(e){
         e.preventDefault();
         var a = $(this);
+        var href = a.attr('href');
         var li = a.parents('li').first();
         var target = li.children('ul.collapse');
 
-        if (target.hasClass('show')) {
-            target.collapse('hide');
+        if (a.hasClass('follow')) {
+            window.location.href = href;
         } else {
             target.collapse('show');
+            a.addClass('follow');
         }
     });
 
