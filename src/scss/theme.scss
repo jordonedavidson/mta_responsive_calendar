@@ -5,15 +5,19 @@
 /*add a colour */
 $maroon : #4d0017;
 $coffee : #6f4e37;
+$sand : #efebe7;
 
 $colors: (
     "maroon": $maroon,
-    "coffee": $coffee
+    "coffee": $coffee,
+    "sand" : $sand
 );
 
 //set primary colour to maroon
 $theme-colors: (
-    "primary" : $maroon
+    "primary" : $maroon,
+    "coffee" : $coffee,
+    "sand" : $sand
 );
 
 /* bring in bootstrap to apply it */
