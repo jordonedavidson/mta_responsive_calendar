@@ -29,6 +29,7 @@ footer a:hover {
     max-width: 25%;
     overflow-x: hidden; /* Disable horizontal scroll */
     overflow-y: hidden; /* Disable vertical scroll */
+    background-color: #6c757d;
 }
 #toc_tab{
     display:none;
@@ -42,12 +43,27 @@ footer a:hover {
 }
 
 .toc a {
-    color: #fff;
+    color: #efebe7;
 }
 .toc ul {
     margin-left: 0;
     list-style-type: none;
     padding-left: 0;
+}
+.toc ul li {
+    padding: 0.5rem 0;
+    margin :0;
+}
+
+.toc span {
+    margin-bottom:.3rem;
+}
+#parts ul {
+    background-color: #565d64;
+}
+
+#parts ul ul {
+    background-color: #40464b;
 }
 
 @media (max-width: 768px) {
