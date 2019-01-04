@@ -9589,6 +9589,10 @@ header h1 {
     left:50%;
 }
 
+#content{ 
+    margin-bottom: 2.5rem;
+}
+
 @media (max-width: 1135px) {
     .hero h1 {
         left: auto;
@@ -9620,6 +9624,10 @@ header h1 {
 
     #calendar-content{
         margin-left:24px;
+    }
+
+    #content {
+        margin-bottom: 4.5rem;
     }
 }
 
