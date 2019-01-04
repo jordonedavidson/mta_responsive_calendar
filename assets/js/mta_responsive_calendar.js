@@ -19967,7 +19967,7 @@ jQuery(document).ready(function($){
         }
     });
 
-    $('#toc_filter_go').on('click touchstart', function(e){
+    $('#toc_filter_go').on('click tap', function(e){
         e.preventDefault();
         var data = $(this).data();
         console.log(data);
