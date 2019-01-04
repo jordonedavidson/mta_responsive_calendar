@@ -8882,7 +8882,7 @@ footer a:hover {
 }
 
 header{
-    position: fixed;
+    position: relative;
     top:0;
     width: 100%;
     z-index: 2;
@@ -8896,7 +8896,7 @@ footer{
 
 #content { 
     position: relative;
-    top:55px;
+    /*top:55px;*/
 }
 
 #copyright {
@@ -8965,7 +8965,26 @@ footer{
     background-color: #2b2e32;
 }
 
+header .hero {
+    width: 100%;
+    margin-top:calc(1rem + 30px);
+}
+
+header h1 {
+    position: absolute;
+    top: 1rem;
+    left:50%;
+}
+
+@media (max-width: 1024px) {
+    .hero h1 {
+        left: auto;
+        right: 0;
+    }
+}
+
 @media (max-width: 768px) {
+
     #toc_tab {
         display:block;
     }
@@ -8976,7 +8995,7 @@ footer{
         max-width: 50%;
         position: fixed; /* Stay in place */
         z-index: 100; /* Stay on top */
-        top: 47px; /* Stay at the top under the main navbar */
+        top: calc(1rem + 30px); /* Stay at the top under the main navbar */
         left: 0;
         padding-top: 60px; /* Place content 60px from the top */
         transition: 0.5s; /* 0.5 second transition effect to slide in the */
@@ -8984,5 +9003,15 @@ footer{
 
     #table_of_contents .toc {
         display:none;
+    }
+
+    #calendar-content{
+        margin-left:24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.5rem;
     }
 }
