@@ -16832,34 +16832,53 @@ function openToCurrentPage() {
 
     var current_link = jQuery('#table_of_contents').find('a[href="'+this_page+'"]');
 
+    var toggle = current_link.next('.nav_toggle');
+
     var parent_li = current_link.parents('li').first();
 
     parent_li.addClass('active');
     
     current_link.parents('.collapse').each(function(){
         var ul = jQuery(this);
-        ul.addClass('show');
-        ul.parent('li').children('span').children('a').addClass('follow');
+        var a = ul.parent('li').children('span').children('.nav_toggle');
+        setToggle(a, ul);
     });
 
-    if( current_link.hasClass('nav-toggle') ){
+    if( toggle.length > 0 ){
         var target = current_link.parent('span').next('ul');
-        current_link.addClass('follow');
-        target.collapse('show');
+        setToggle(toggle, target);
     }   
 }
 
 // Collapse the table of contents structure
 function setCollapses(top_ul) 
 {
+    var toggle = '<a href="#" class="nav_toggle fas fa-angle-down" role="button" title="expand"></a>';
+    
     jQuery(top_ul).find('li').each(function(){
         var li = jQuery(this);
        
         if (li.has('ul').length  != 0) {
-            li.find('a').first().addClass('nav_toggle');
+            var a =  li.find('a').first();
+            a.after(toggle);
             li.children('ul').addClass('collapse');
         }
     });
+}
+
+//set the toggle state
+function setToggle(a, target) {
+    if (a.hasClass('open')) {
+        target.collapse('hide');
+        a.removeClass('open');
+        a.removeClass('fa-angle-up').addClass('fa-angle-down');
+        a.attr('title', 'Expand');
+    } else {
+        target.collapse('show');
+        a.addClass('open');
+        a.removeClass('fa-angle-down').addClass('fa-angle-up');
+        a.attr('title', 'Collapse');
+    }
 }
 
 function lastPathItem(path)
@@ -16906,16 +16925,10 @@ jQuery(document).ready(function($){
     jQuery('.nav_toggle').click(function(e){
         e.preventDefault();
         var a = $(this);
-        var href = a.attr('href');
         var li = a.parents('li').first();
         var target = li.children('ul.collapse');
 
-        if (a.hasClass('follow')) {
-            window.location.href = href;
-        } else {
-            target.collapse('show');
-            a.addClass('follow');
-        }
+       setToggle(a, target);
     });
 
 });
