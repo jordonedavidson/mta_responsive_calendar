@@ -146,7 +146,7 @@ jQuery(document).ready(function($){
         }
     });
 
-    $('#table_of_contents').on('click touchstart', '#toc_filter_go', function(e){
+    $('#toc_filter_go').on('click touchstart', function(e){
         e.preventDefault();
         var data = $(this).data();
         console.log(data);
