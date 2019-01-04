@@ -14,6 +14,7 @@ module.exports = function(grunt) {
         concat: {
             css : { 
                 src : [
+                    'src/jquery-ui.css',
                     'src/theme_bootstrap.css',
                     'src/theme.css'
                     ],
@@ -22,6 +23,7 @@ module.exports = function(grunt) {
             js : {  
                 src : [
                     'node_modules/jquery/dist/jquery.js',
+                    'src/jquery-ui.js',
                     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
                     'src/theme.js'
                     ],
@@ -39,15 +41,15 @@ module.exports = function(grunt) {
           },
         watch: {
             sass: {
-                files: 'src/**/*.scss',
+                files: 'src/scss/*.scss',
                 tasks: ['sass']
             },
             css: {
-                files: 'src/**/*.css',
+                files: 'src/*.css',
                 tasks: ['concat:css']
             },
             js: {
-                files: 'src/**/*.js',
+                files: 'src/*.js',
                 tasks: ['jshint', 'concat:js']
             }
         },
