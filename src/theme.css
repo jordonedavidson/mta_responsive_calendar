@@ -59,6 +59,14 @@ footer{
     z-index: 101;
 }
 
+.toc .input-group {
+    position:inherit;
+    margin:0;
+    padding:0;
+}
+.toc .input-group input {
+    width: calc(100% - 2.5rem);
+}
 .toc a {
     color: #efebe7;
     display:inline-block;
@@ -74,6 +82,10 @@ footer{
     text-align:center;
     text-decoration:none;
 
+}
+
+#toc_filter_go {
+    width:auto;
 }
 
 .toc ul {
@@ -119,7 +131,7 @@ header h1 {
     left:50%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1135px) {
     .hero h1 {
         left: auto;
         right: 0;

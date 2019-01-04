@@ -54,6 +54,31 @@ function setToggle(a, target) {
     }
 }
 
+function slideTableOfContents(closed)
+{
+    var i = jQuery('#toc_tab').children('i');
+    
+    if(typeof(closed) != 'boolean' ) {
+        closed = false;
+    }
+
+    if (closed) {
+        jQuery('#table_of_contents .toc').css({display: "block"});
+        jQuery("#table_of_contents").css({
+            width: "50%",
+            "overflow-y": "auto"
+        });
+        i.removeClass('fa-arrow-right').addClass('fa-arrow-left');
+    } else {
+        jQuery("#table_of_contents").css({
+            width: "24px",
+            "overflow-y": "hidden"
+        });
+        jQuery('#table_of_contents .toc').css({display: "none"});
+        i.removeClass('fa-arrow-left').addClass('fa-arrow-right');
+    }
+}
+
 function lastPathItem(path)
 {
     var page = path.split("/").pop();
@@ -63,6 +88,22 @@ function lastPathItem(path)
     }
 
     return page;
+}
+
+function getTOCLinks()
+{
+    var out = [];
+    jQuery('#table_of_contents .toc').find('a').each(function(){
+        var a = jQuery(this);
+        if (!a.hasClass('nav_toggle')) {
+            //only get real links,
+            var link = a.attr('href');
+            var label = a.text();
+            out.push({'label' : label, 'link' : link});
+        }
+    });
+
+    return out;
 }
 
 jQuery(document).ready(function($){
@@ -78,21 +119,7 @@ jQuery(document).ready(function($){
         var i = jQuery(this).children('i');
         var closed = i.hasClass('fa-arrow-right');
   
-        if (closed) {
-            jQuery('#table_of_contents .toc').css({display: "block"});
-            jQuery("#table_of_contents").css({
-                width: "50%",
-                "overflow-y": "auto"
-            });
-            i.removeClass('fa-arrow-right').addClass('fa-arrow-left');
-        } else {
-            jQuery("#table_of_contents").css({
-                width: "24px",
-                "overflow-y": "hidden"
-            });
-            jQuery('#table_of_contents .toc').css({display: "none"});
-            i.removeClass('fa-arrow-left').addClass('fa-arrow-right');
-        }
+        slideTableOfContents(closed);
     });
 
     jQuery('.nav_toggle').click(function(e){
@@ -104,4 +131,31 @@ jQuery(document).ready(function($){
        setToggle(a, target);
     });
 
+    $('#toc_filter').autocomplete({
+        source: getTOCLinks(),
+        focus : function(event, ui){
+            event.preventDefault();
+            $(this).val(ui.item.label);
+        },
+        select : function(event, ui){
+            event.preventDefault();
+            $('#toc_filter_go').attr('data-link',  ui.item.link);
+            $(this).val(ui.item.label);
+            
+            //window.location.href = ui.item.link;
+        }
+    });
+
+    $('#toc_filter_go').click(function(e){
+        e.preventDefault();
+        var data = $(this).data();
+        console.log(data);
+        if (data.link.length) {
+            if ($(window).width() <= 768) {
+                slideTableOfContents();
+            }
+            $('#toc_filter').val("");
+            window.location.href = data.link;
+        }
+    });
 });
