@@ -8944,15 +8944,21 @@ footer{
     padding-left: 0;
 }
 .toc ul li {
-    padding: 0.5rem 0;
+    padding: 0;
     margin :0;
 }
 
 .toc span {
     margin-bottom:.3rem;
-    padding: 0 .3rem;
+    padding: 0.5rem .3rem;
     display:inline-block;
+    height:100%;
+    width:100%;
 }
+.toc li.active > span {
+    background-color:#4d0017;
+}
+
 #parts ul {
     background-color: #565d64;
 }

@@ -1,16 +1,33 @@
 
+//open table of contents accordion to current page
+function openToCurrentPage() {
+    var this_page = lastPathItem(window.location.pathname);
+
+    var current_link = jQuery('#table_of_contents').find('a[href="'+this_page+'"]');
+
+    var parent_li = current_link.parents('li').first();
+
+    parent_li.addClass('active');
+    
+    current_link.parents('.collapse').each(function(){
+        var ul = jQuery(this);
+        ul.addClass('show');
+        ul.parent('li').children('span').children('a').addClass('follow');
+    });
+
+    if( current_link.hasClass('nav-toggle') ){
+        var target = current_link.parent('span').next('ul');
+        current_link.addClass('follow');
+        target.collapse('show');
+    }   
+}
+
+// Collapse the table of contents structure
 function setCollapses(top_ul) 
 {
-    var c = 0;
     jQuery(top_ul).find('li').each(function(){
         var li = jQuery(this);
-        if( c < 3 ){
-            console.log(li.children('span').html());
-            console.log('ul children? ');
-            console.log(li.has('ul'));
-            c++;
-        }
-        
+       
         if (li.has('ul').length  != 0) {
             li.find('a').first().addClass('nav_toggle');
             li.children('ul').addClass('collapse');
@@ -35,11 +52,13 @@ jQuery(document).ready(function($){
 
     setCollapses("#parts");
 
+    openToCurrentPage();
+
     jQuery('#toc_tab').click(function(e){
         e.preventDefault();
         var i = jQuery(this).children('i');
         var closed = i.hasClass('fa-arrow-right');
-        console.log('closed is: '+closed);
+  
         if (closed) {
             jQuery('#table_of_contents .toc').css({display: "block"});
             jQuery("#table_of_contents").css({
