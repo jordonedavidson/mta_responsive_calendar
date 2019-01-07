@@ -9589,6 +9589,16 @@ header h1 {
     left:50%;
 }
 
+/*handle in-page anchors conflict with fixed header */
+.titlepage {
+    position: relative;
+}
+.titlepage a {
+    position: absolute;
+    left: 0px;
+    top: calc(-1.5rem - 30px);
+}
+
 #content{ 
     margin-bottom: 2.5rem;
 }
