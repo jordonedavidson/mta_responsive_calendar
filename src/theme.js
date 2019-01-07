@@ -188,4 +188,30 @@ jQuery(document).ready(function($){
             }   
         }
     });
+
+    
+    $('#table_of_contents').swipe({
+        
+        swipeLeft : function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            // left swipe to close toc on mobile
+            slideTableOfContents();
+            return false;
+        },
+
+        tap : function(event, target) {
+            //close toc on mobile if the tapped link is on the same page
+            if ($(window).width() <= 768) {
+
+                //only do this on mobile or responsive sised desktop
+                var link = $(target).attr('href');
+                var this_page = lastPathItem(window.location.pathname);
+
+                if(link.indexOf(this_page) != -1) {
+                    window.location.href = link;
+                    slideTableOfContents();
+                }
+            }
+        }
+    });
+
 });

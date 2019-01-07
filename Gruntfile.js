@@ -24,6 +24,7 @@ module.exports = function(grunt) {
                 src : [
                     'node_modules/jquery/dist/jquery.js',
                     'src/jquery-ui.js',
+                    'node_modules/jquery-touchswipe/jquery.touchSwipe.js',
                     'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
                     'src/theme.js'
                     ],
