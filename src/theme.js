@@ -188,4 +188,14 @@ jQuery(document).ready(function($){
             }   
         }
     });
+
+    // left swipe to close toc on mobile
+    $('#table_of_contents').swipe({
+        swipeStatus : function(event, phase, direction, distance, duration, fingers) {
+            if (phase=="move" && direction =="left") {
+                slideTableOfContents();
+                return false;
+            }
+        }
+    });
 });
