@@ -141,6 +141,28 @@ header h1 {
     top: calc(-1.5rem - 30px);
 }
 
+/* back to top styling */
+.titlepage .top_link {
+    padding-left: 1rem;
+}
+
+.sect1 > .titlepage,
+.sect2 > .titlepage {
+    cursor: pointer;
+}
+.sect1 > .titlepage .title:hover,
+.sect2 > .titlepage .title:hover {
+    color:#4d0017;
+}
+.sect1 > .titlepage .title .top_link,
+.sect2 > .titlepage .title .top_link {
+    visibility: hidden;
+}
+.sect1 > .titlepage .title:hover .top_link,
+.sect2 > .titlepage .title:hover .top_link {
+    visibility: visible;
+}
+
 #content{ 
     margin-bottom: 2.5rem;
 }

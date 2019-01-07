@@ -19927,6 +19927,16 @@ function getTOCLinks()
     return out;
 }
 
+function backToTopLinks(path) 
+{
+    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i></a>';
+    
+    jQuery(path).each(function(){
+        jQuery(this).append(link);
+        console.log(jQuery(this).html());
+    });
+}
+
 jQuery(document).ready(function($){
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -19934,6 +19944,9 @@ jQuery(document).ready(function($){
     setCollapses("#parts");
 
     openToCurrentPage();
+
+    backToTopLinks('.sect1 > .titlepage .title');
+    backToTopLinks('.sect2 > .titlepage .title');
 
     jQuery('#toc_tab').click(function(e){
         e.preventDefault();
@@ -19963,7 +19976,7 @@ jQuery(document).ready(function($){
             $('#toc_filter_go').attr('data-link',  ui.item.link);
             $(this).val(ui.item.label);
             
-            //window.location.href = ui.item.link;
+            window.location.href = ui.item.link;
         }
     });
 
@@ -19977,6 +19990,23 @@ jQuery(document).ready(function($){
             }
             $('#toc_filter').val("");
             window.location.href = data.link;
+        }
+    });
+
+    $('.titlepage').each(function(){
+        if ($(this).has('.top_link')) {
+            var i = $(this).find('.top_link');
+            var h = i.parent();
+            var target_name = '#'+i.data('target');
+            
+            //var target = document.getElementById(i.data('target'));
+            if (target_name != '#undefined') {
+                var target_position = $(target_name).offset().top;
+
+                h.on('click tap', function(){
+                    $('html, body').scrollTop(target_position - 60);
+                });
+            }   
         }
     });
 });
