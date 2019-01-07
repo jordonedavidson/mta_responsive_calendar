@@ -22123,13 +22123,25 @@ jQuery(document).ready(function($){
         }
     });
 
-    // left swipe to close toc on mobile
+    
     $('#table_of_contents').swipe({
-        swipeStatus : function(event, phase, direction, distance, duration, fingers) {
-            if (phase=="move" && direction =="left") {
+        
+        swipeLeft : function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            // left swipe to close toc on mobile
+            slideTableOfContents();
+            return false;
+        },
+
+        tap : function(event, target) {
+             //close toc on mobile if the tapped link is on the same page
+            var link = $(target).attr('href');
+            var this_page = lastPathItem(window.location.pathname);
+
+            if(link.indexOf(this_page) != -1) {
+                window.location.href = link;
                 slideTableOfContents();
-                return false;
             }
         }
     });
+
 });
