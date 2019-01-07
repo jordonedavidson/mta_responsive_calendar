@@ -22024,6 +22024,11 @@ function lastPathItem(path)
     return page;
 }
 
+function topNavHeight() 
+{
+    return $('#top_nav').height();
+}
+
 function getTOCLinks()
 {
     var out = [];
@@ -22046,7 +22051,6 @@ function backToTopLinks(path)
     
     jQuery(path).each(function(){
         jQuery(this).append(link);
-        console.log(jQuery(this).html());
     });
 }
 
@@ -22096,7 +22100,7 @@ jQuery(document).ready(function($){
     $('#toc_filter_go').on('click tap', function(e){
         e.preventDefault();
         var data = $(this).data();
-        console.log(data);
+
         if (data.link.length) {
             if ($(window).width() <= 768) {
                 slideTableOfContents();
@@ -22116,7 +22120,7 @@ jQuery(document).ready(function($){
                 var target_position = $(target_name).offset().top;
 
                 h.on('click tap', function(){
-                    $('html, body').scrollTop(target_position - 60);
+                    $('html, body').scrollTop(target_position - topNavHeight());
                 });
             }   
         }
@@ -22130,7 +22134,7 @@ jQuery(document).ready(function($){
         }
 
         var target_position = $('#'+target_name).offset().top;
-        $('html, body').scrollTop(target_position - 60);
+        $('html, body').scrollTop((target_position - topNavHeight()));
         $(this).tooltip('hide');
     });
 
