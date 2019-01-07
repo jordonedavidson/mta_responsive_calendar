@@ -199,13 +199,17 @@ jQuery(document).ready(function($){
         },
 
         tap : function(event, target) {
-             //close toc on mobile if the tapped link is on the same page
-            var link = $(target).attr('href');
-            var this_page = lastPathItem(window.location.pathname);
+            //close toc on mobile if the tapped link is on the same page
+            if ($(window).width() <= 768) {
 
-            if(link.indexOf(this_page) != -1) {
-                window.location.href = link;
-                slideTableOfContents();
+                //only do this on mobile or responsive sised desktop
+                var link = $(target).attr('href');
+                var this_page = lastPathItem(window.location.pathname);
+
+                if(link.indexOf(this_page) != -1) {
+                    window.location.href = link;
+                    slideTableOfContents();
+                }
             }
         }
     });
