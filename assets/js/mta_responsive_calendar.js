@@ -22042,7 +22042,7 @@ function getTOCLinks()
 
 function backToTopLinks(path) 
 {
-    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i></a>';
+    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i>';
     
     jQuery(path).each(function(){
         jQuery(this).append(link);
@@ -22111,8 +22111,7 @@ jQuery(document).ready(function($){
             var i = $(this).find('.top_link');
             var h = i.parent();
             var target_name = '#'+i.data('target');
-            
-            //var target = document.getElementById(i.data('target'));
+
             if (target_name != '#undefined') {
                 var target_position = $(target_name).offset().top;
 
@@ -22123,7 +22122,18 @@ jQuery(document).ready(function($){
         }
     });
 
-    
+    $('.scroller').on('click tap', function(){
+        var target_name = $(this).data('target');
+
+        if(target_name == 'undefined') {
+            return false;
+        }
+
+        var target_position = $('#'+target_name).offset().top;
+        $('html, body').scrollTop(target_position - 60);
+        $(this).tooltip('hide');
+    });
+
     $('#table_of_contents').swipe({
         
         swipeLeft : function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
