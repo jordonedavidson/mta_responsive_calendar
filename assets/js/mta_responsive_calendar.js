@@ -22042,7 +22042,7 @@ function getTOCLinks()
 
 function backToTopLinks(path) 
 {
-    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i></a>';
+    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i>';
     
     jQuery(path).each(function(){
         jQuery(this).append(link);
