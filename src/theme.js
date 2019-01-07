@@ -90,6 +90,11 @@ function lastPathItem(path)
     return page;
 }
 
+function topNavHeight() 
+{
+    return $('#top_nav').height();
+}
+
 function getTOCLinks()
 {
     var out = [];
@@ -108,11 +113,10 @@ function getTOCLinks()
 
 function backToTopLinks(path) 
 {
-    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i></a>';
+    var link = '<i class="fas fa-angle-double-up top_link" data-target="calendar-content" data-toggle="tooltip" data-placement="top" title="Back to Top"></i>';
     
     jQuery(path).each(function(){
         jQuery(this).append(link);
-        console.log(jQuery(this).html());
     });
 }
 
@@ -162,7 +166,7 @@ jQuery(document).ready(function($){
     $('#toc_filter_go').on('click tap', function(e){
         e.preventDefault();
         var data = $(this).data();
-        console.log(data);
+
         if (data.link.length) {
             if ($(window).width() <= 768) {
                 slideTableOfContents();
@@ -177,15 +181,51 @@ jQuery(document).ready(function($){
             var i = $(this).find('.top_link');
             var h = i.parent();
             var target_name = '#'+i.data('target');
-            
-            //var target = document.getElementById(i.data('target'));
+
             if (target_name != '#undefined') {
                 var target_position = $(target_name).offset().top;
 
                 h.on('click tap', function(){
-                    $('html, body').scrollTop(target_position - 60);
+                    $('html, body').scrollTop(target_position - topNavHeight());
                 });
             }   
         }
     });
+
+    $('.scroller').on('click tap', function(){
+        var target_name = $(this).data('target');
+
+        if(target_name == 'undefined') {
+            return false;
+        }
+
+        var target_position = $('#'+target_name).offset().top;
+        $('html, body').scrollTop((target_position - topNavHeight()));
+        $(this).tooltip('hide');
+    });
+
+    $('#table_of_contents').swipe({
+        
+        swipeLeft : function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            // left swipe to close toc on mobile
+            slideTableOfContents();
+            return false;
+        },
+
+        tap : function(event, target) {
+            //close toc on mobile if the tapped link is on the same page
+            if ($(window).width() <= 768) {
+
+                //only do this on mobile or responsive sised desktop
+                var link = $(target).attr('href');
+                var this_page = lastPathItem(window.location.pathname);
+
+                if(link.indexOf(this_page) != -1) {
+                    window.location.href = link;
+                    slideTableOfContents();
+                }
+            }
+        }
+    });
+
 });
