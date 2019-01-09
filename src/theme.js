@@ -1,3 +1,4 @@
+//import { type } from "os";
 
 //open table of contents accordion to current page
 function openToCurrentPage() {
@@ -214,16 +215,27 @@ jQuery(document).ready(function($){
 
         tap : function(event, target) {
             //close toc on mobile if the tapped link is on the same page
+            
             if ($(window).width() <= 768) {
 
-                //only do this on mobile or responsive sised desktop
+                //only do this on mobile or responsive sized desktop
                 var link = $(target).attr('href');
-                var this_page = lastPathItem(window.location.pathname);
 
-                if(link.indexOf(this_page) != -1) {
-                    window.location.href = link;
-                    slideTableOfContents();
+                if (typeof link !== typeof undefined && link !== false) {
+                    
+                    if (link == '#') {
+                        return false;
+                    }
+
+                    var this_page = lastPathItem(window.location.pathname);
+
+                    if(link.indexOf(this_page) != -1) {
+                        window.location.href = link;
+                        slideTableOfContents();
+                    }
+                    
                 }
+                return false;
             }
         }
     });
