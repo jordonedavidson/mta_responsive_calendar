@@ -22315,22 +22315,6 @@ function openToCurrentPage() {
     }   
 }
 
-// Collapse the table of contents structure
-function setCollapses(top_ul) 
-{
-    var toggle = '<a href="#" class="nav_toggle fas fa-angle-down" role="button" title="expand"></a>';
-    
-    jQuery(top_ul).find('li').each(function(){
-        var li = jQuery(this);
-       
-        if (li.has('ul').length  != 0) {
-            var a =  li.find('a').first();
-            a.after(toggle);
-            li.children('ul').addClass('collapse');
-        }
-    });
-}
-
 //set the toggle state
 function setToggle(a, target) {
     if (a.hasClass('open')) {
@@ -22415,8 +22399,6 @@ function backToTopLinks(path)
 jQuery(document).ready(function($){
 
     $('[data-toggle="tooltip"]').tooltip();
-
-    setCollapses("#parts");
 
     openToCurrentPage();
 
