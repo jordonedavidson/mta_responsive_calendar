@@ -129,8 +129,8 @@ jQuery(document).ready(function($){
 
     openToCurrentPage();
 
-    //backToTopLinks('.sect1 > .titlepage .title');
-    //backToTopLinks('.sect2 > .titlepage .title');
+    backToTopLinks('.sect1 > .titlepage .title');
+    backToTopLinks('.sect2 > .titlepage .title');
 
     jQuery('#toc_tab').click(function(e){
         e.preventDefault();
