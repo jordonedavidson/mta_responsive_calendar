@@ -33,13 +33,28 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-              banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+              banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+              sourceMap: true
             },
             build: {
               src: 'assets/js/<%= pkg.name %>.js',
               dest: 'assets/js/<%= pkg.name %>.min.js'
             }
           },
+        cssmin: {
+            options: {
+                sourceMap: true
+            },
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/css',
+                    src: ['<%= pkg.name %>.css'],
+                    dest: 'assets/css',
+                    ext: '.min.css'
+                }]
+            }
+        },
         watch: {
             sass: {
                 files: 'src/scss/*.scss',
@@ -65,6 +80,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask(
         'default',
@@ -73,7 +89,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask(
         'production',
-        ['uglify']
+        ['uglify', 'cssmin']
     )
 
 };
