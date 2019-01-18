@@ -3,6 +3,17 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        meta: {
+			banner: '/*!\n' +
+				' * <%= pkg.title %> v<%= pkg.version %>\n' +
+				' * Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %>\n' +
+				' * <%= pkg.homepage %>\n' +
+				' * This content is released under the <%= _.pluck(pkg.licenses, "type").join(", ") %> license<%= pkg.licenses.length === 1 ? "" : "s" %>\n' +
+				' * <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
+				' * <%= grunt.template.today("dd-mm-yyyy") %>\n' +
+				' */\n\n',
+			microbanner: '/*! <%= pkg.name %> v<%= pkg.version %> | Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> | <%= pkg.homepage %> | <%= _.pluck(pkg.licenses, "url").join(", ") %> */\n'
+		},
         sass: {
             dist: {
                 options: { style: 'expanded' },
@@ -12,6 +23,9 @@ module.exports = function(grunt) {
             }
         },
         concat: {
+            options: {
+                banner: '<%= meta.banner %>'
+            },
             css : { 
                 src : [
                     'src/jquery-ui.css',
@@ -33,7 +47,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-              banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+              banner: '<%= meta.microbanner %>',
               sourceMap: true
             },
             build: {
@@ -43,6 +57,7 @@ module.exports = function(grunt) {
           },
         cssmin: {
             options: {
+                banner: '<%= meta.microbanner %>' ,
                 sourceMap: true
             },
             target: {
