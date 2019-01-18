@@ -10481,7 +10481,6 @@ footer{
 .toc span {
     padding: 0.5rem .3rem;
     display:inline-block;
-    /*height:100%;*/
     width:100%;
 }
 .toc li.active > span {
@@ -10545,6 +10544,10 @@ header h1 {
 
 #content{ 
     margin-bottom: 2.5rem;
+}
+
+.sect3{
+    margin: 1rem 0;
 }
 
 @media (max-width: 1135px) {
