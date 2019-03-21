@@ -139,6 +139,9 @@ jQuery(document).ready(function($){
         focus : function(event, ui){
             event.preventDefault();
             $(this).val(ui.item.label);
+            //update the data-link as we move one to another. This way the search icon will
+            //work even if we click away from the selector.
+            $('#toc_filter_go').attr('data-link',  ui.item.link);
         },
         select : function(event, ui){
             event.preventDefault();
