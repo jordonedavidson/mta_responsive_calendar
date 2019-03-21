@@ -1,4 +1,12 @@
 /*!
+ *  v1.1.1
+ * Copyright 2019, 
+ * 
+ * This content is released under the ISC license
+ * 21-03-2019
+ */
+
+/*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
  *
@@ -22332,6 +22340,7 @@ function setToggle(a, target) {
 
 function slideTableOfContents(closed)
 {
+    console.log('width:' + jQuery(window).width());
     var i = jQuery('#toc_tab').children('i');
     
     if(typeof(closed) != 'boolean' ) {
@@ -22422,6 +22431,8 @@ jQuery(document).ready(function($){
        setToggle(a, target);
     });
 
+    $('#toc_filter').on('click', function(){ jQuery(this).focus(); });
+
     $('#toc_filter').autocomplete({
         source: getTOCLinks(),
         focus : function(event, ui){
@@ -22482,8 +22493,12 @@ jQuery(document).ready(function($){
         
         swipeLeft : function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
             // left swipe to close toc on mobile
-            slideTableOfContents();
-            return false;
+            
+            if ($(window).width() <= 768) {
+                slideTableOfContents();
+                return false;
+            }
+            
         },
 
         tap : function(event, target) {

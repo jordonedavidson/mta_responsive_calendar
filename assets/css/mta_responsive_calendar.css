@@ -1,3 +1,11 @@
+/*!
+ *  v1.1.1
+ * Copyright 2019, 
+ * 
+ * This content is released under the ISC license
+ * 21-03-2019
+ */
+
 /*! jQuery UI - v1.12.1 - 2019-01-04
 * http://jqueryui.com
 * Includes: core.css, autocomplete.css, menu.css, theme.css
@@ -10414,7 +10422,7 @@ footer{
 .small_logo {
     text-indent:-9999px;
     display:inline-block;
-    background: url(/assets/images/mta-sprite.svg) no-repeat -528px -292px;
+    background: url(../images/mta-sprite.svg) no-repeat -528px -292px;
     width:49px;
     height:28px;
     cursor:pointer;

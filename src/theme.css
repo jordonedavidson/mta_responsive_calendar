@@ -34,7 +34,7 @@ footer{
 .small_logo {
     text-indent:-9999px;
     display:inline-block;
-    background: url(/assets/images/mta-sprite.svg) no-repeat -528px -292px;
+    background: url(../images/mta-sprite.svg) no-repeat -528px -292px;
     width:49px;
     height:28px;
     cursor:pointer;
