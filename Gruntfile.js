@@ -8,8 +8,7 @@ module.exports = function(grunt) {
 				' * <%= pkg.title %> v<%= pkg.version %>\n' +
 				' * Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %>\n' +
 				' * <%= pkg.homepage %>\n' +
-				' * This content is released under the <%= _.pluck(pkg.licenses, "type").join(", ") %> license<%= pkg.licenses.length === 1 ? "" : "s" %>\n' +
-				' * <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
+				' * This content is released under the <%= pkg.license %> license\n' +
 				' * <%= grunt.template.today("dd-mm-yyyy") %>\n' +
 				' */\n\n',
 			microbanner: '/*! <%= pkg.name %> v<%= pkg.version %> | Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> | <%= pkg.homepage %> | <%= _.pluck(pkg.licenses, "url").join(", ") %> */\n'
