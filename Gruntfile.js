@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				' * This content is released under the <%= pkg.license %> license\n' +
 				' * <%= grunt.template.today("dd-mm-yyyy") %>\n' +
 				' */\n\n',
-			microbanner: '/*! <%= pkg.name %> v<%= pkg.version %> | Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> | <%= pkg.homepage %> | <%= _.pluck(pkg.licenses, "url").join(", ") %> */\n'
+			microbanner: '/*! <%= pkg.name %> v<%= pkg.version %> | Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> | <%= pkg.homepage %> | <%= pkg.license %> */\n'
 		},
         sass: {
             dist: {
