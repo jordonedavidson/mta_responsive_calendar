@@ -104,7 +104,7 @@ footer{
     width:100%;
 }
 .toc li.active > span {
-    background-color:#97012e;
+    background-color:#862633;
 }
 
 #parts ul {
@@ -151,7 +151,7 @@ header h1 {
 }
 .sect1 > .titlepage .title:hover,
 .sect2 > .titlepage .title:hover {
-    color:#97012e;
+    color:#862633;
 }
 .sect1 > .titlepage .title .top_link,
 .sect2 > .titlepage .title .top_link {
