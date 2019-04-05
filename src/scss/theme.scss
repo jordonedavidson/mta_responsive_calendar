@@ -1,24 +1,35 @@
 /* import the bootstrap things we want to modify */ 
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 /*add a colour */
 $maroon : #862633;
 $coffee : #6f4e37;
 $sand : #efebe7;
+$grey: #717275;
 
 $colors: (
     "maroon": $maroon,
     "coffee": $coffee,
-    "sand" : $sand
+    "sand" : $sand,
+    "grey": $grey
 );
 
 //set primary colour to maroon
 $theme-colors: (
     "primary" : $maroon,
     "coffee" : $coffee,
-    "sand" : $sand
+    "sand" : $sand,
+    "grey": $grey
 );
+
+//update body color
+$body-color:  #717275;
+
+//update font-family
+$font-family-sans-serif: Arial, Helvetica, sans-serif;
+
 
 /* bring in bootstrap to apply it */
 @import "../../node_modules/bootstrap/scss/bootstrap";

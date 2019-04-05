@@ -3,7 +3,7 @@
  * Copyright 2019, 
  * 
  * This content is released under the ISC license
- * 26-03-2019
+ * 05-04-2019
  */
 
 /*! jQuery UI - v1.12.1 - 2019-01-04
@@ -615,6 +615,7 @@ a.ui-button:active,
   --maroon: #862633;
   --coffee: #6f4e37;
   --sand: #efebe7;
+  --grey: #717275;
   --primary: #862633;
   --secondary: #6c757d;
   --success: #28a745;
@@ -625,12 +626,13 @@ a.ui-button:active,
   --dark: #343a40;
   --coffee: #6f4e37;
   --sand: #efebe7;
+  --grey: #717275;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: Arial, Helvetica, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -657,7 +659,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #717275;
   text-align: left;
   background-color: #fff;
 }
@@ -2344,6 +2346,26 @@ pre code {
   background-color: #f2ebe8;
 }
 
+.table-grey,
+.table-grey > th,
+.table-grey > td {
+  background-color: #d7d8d8;
+}
+.table-grey th,
+.table-grey td,
+.table-grey thead th,
+.table-grey tbody + tbody {
+  border-color: #b5b6b7;
+}
+
+.table-hover .table-grey:hover {
+  background-color: #cacbcb;
+}
+.table-hover .table-grey:hover > td,
+.table-hover .table-grey:hover > th {
+  background-color: #cacbcb;
+}
+
 .table-active,
 .table-active > th,
 .table-active > td {
@@ -2895,7 +2917,7 @@ textarea.form-control {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #212529;
+  color: #717275;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -2913,7 +2935,7 @@ textarea.form-control {
   }
 }
 .btn:hover {
-  color: #212529;
+  color: #717275;
   text-decoration: none;
 }
 .btn:focus, .btn.focus {
@@ -3202,6 +3224,33 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(208, 205, 203, 0.5);
 }
 
+.btn-grey {
+  color: #fff;
+  background-color: #717275;
+  border-color: #717275;
+}
+.btn-grey:hover {
+  color: #fff;
+  background-color: #5e5f62;
+  border-color: #58595b;
+}
+.btn-grey:focus, .btn-grey.focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 135, 138, 0.5);
+}
+.btn-grey.disabled, .btn-grey:disabled {
+  color: #fff;
+  background-color: #717275;
+  border-color: #717275;
+}
+.btn-grey:not(:disabled):not(.disabled):active, .btn-grey:not(:disabled):not(.disabled).active, .show > .btn-grey.dropdown-toggle {
+  color: #fff;
+  background-color: #58595b;
+  border-color: #525255;
+}
+.btn-grey:not(:disabled):not(.disabled):active:focus, .btn-grey:not(:disabled):not(.disabled).active:focus, .show > .btn-grey.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 135, 138, 0.5);
+}
+
 .btn-outline-primary {
   color: #862633;
   border-color: #862633;
@@ -3452,6 +3501,31 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(239, 235, 231, 0.5);
 }
 
+.btn-outline-grey {
+  color: #717275;
+  border-color: #717275;
+}
+.btn-outline-grey:hover {
+  color: #fff;
+  background-color: #717275;
+  border-color: #717275;
+}
+.btn-outline-grey:focus, .btn-outline-grey.focus {
+  box-shadow: 0 0 0 0.2rem rgba(113, 114, 117, 0.5);
+}
+.btn-outline-grey.disabled, .btn-outline-grey:disabled {
+  color: #717275;
+  background-color: transparent;
+}
+.btn-outline-grey:not(:disabled):not(.disabled):active, .btn-outline-grey:not(:disabled):not(.disabled).active, .show > .btn-outline-grey.dropdown-toggle {
+  color: #fff;
+  background-color: #717275;
+  border-color: #717275;
+}
+.btn-outline-grey:not(:disabled):not(.disabled):active:focus, .btn-outline-grey:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-grey.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(113, 114, 117, 0.5);
+}
+
 .btn-link {
   font-weight: 400;
   color: #007bff;
@@ -3557,7 +3631,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #212529;
+  color: #717275;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -5306,6 +5380,15 @@ a.badge-sand:hover, a.badge-sand:focus {
   background-color: #dbd2c8;
 }
 
+.badge-grey {
+  color: #fff;
+  background-color: #717275;
+}
+a.badge-grey:hover, a.badge-grey:focus {
+  color: #fff;
+  background-color: #58595b;
+}
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -5469,6 +5552,18 @@ a.badge-sand:hover, a.badge-sand:focus {
 }
 .alert-sand .alert-link {
   color: #62615f;
+}
+
+.alert-grey {
+  color: #3b3b3d;
+  background-color: #e3e3e3;
+  border-color: #d7d8d8;
+}
+.alert-grey hr {
+  border-top-color: #cacbcb;
+}
+.alert-grey .alert-link {
+  color: #222223;
 }
 
 @keyframes progress-bar-stripes {
@@ -5731,6 +5826,20 @@ a.badge-sand:hover, a.badge-sand:focus {
   color: #fff;
   background-color: #7c7a78;
   border-color: #7c7a78;
+}
+
+.list-group-item-grey {
+  color: #3b3b3d;
+  background-color: #d7d8d8;
+}
+.list-group-item-grey.list-group-item-action:hover, .list-group-item-grey.list-group-item-action:focus {
+  color: #3b3b3d;
+  background-color: #cacbcb;
+}
+.list-group-item-grey.list-group-item-action.active {
+  color: #fff;
+  background-color: #3b3b3d;
+  border-color: #3b3b3d;
 }
 
 .close {
@@ -6567,6 +6676,16 @@ button.bg-sand:focus {
   background-color: #dbd2c8 !important;
 }
 
+.bg-grey {
+  background-color: #717275 !important;
+}
+
+a.bg-grey:hover, a.bg-grey:focus,
+button.bg-grey:hover,
+button.bg-grey:focus {
+  background-color: #58595b !important;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
@@ -6653,6 +6772,10 @@ button.bg-sand:focus {
 
 .border-sand {
   border-color: #efebe7 !important;
+}
+
+.border-grey {
+  border-color: #717275 !important;
 }
 
 .border-white {
@@ -10249,8 +10372,16 @@ a.text-sand:hover, a.text-sand:focus {
   color: #d0c5b9 !important;
 }
 
+.text-grey {
+  color: #717275 !important;
+}
+
+a.text-grey:hover, a.text-grey:focus {
+  color: #4b4c4e !important;
+}
+
 .text-body {
-  color: #212529 !important;
+  color: #717275 !important;
 }
 
 .text-muted {
